@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Lab28LoginAuth.Models;
+using Lab28LoginAuth.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace Lab28LoginAuth
 {
@@ -29,6 +31,13 @@ namespace Lab28LoginAuth
 
             services.AddDbContext<Lab28LoginAuthContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("Lab28LoginAuthContext")));
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("Lab28LoginAuthContext")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultTokenProviders();
 
         }
 
