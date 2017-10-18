@@ -1,0 +1,24 @@
+﻿@model List<Lab28LoginAuth.Models.RecipeModel>
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>Welcome to Reginolds Recipe Repository!!</h1>
+<p>Here is a place to find and store your favorite recipes.</p>
+<p>See the list of dishes or login to see the recipes!</p>
+@foreach (var item in Model)
+{
+    @if (item.IsPublished)
+    {
+
+        <h2>@item.Category</h2>
+        <h3>@item.Dish</h3>
+
+    }
+
+}
+
+<button type="button" asp-action="">Register</button>
+
+<a href="/RecipeModles" class="button-primary">Temp Routing To RecipeModel</a>
